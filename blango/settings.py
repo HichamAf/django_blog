@@ -27,6 +27,7 @@ class Dev(Configuration):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-97b9zcg$+s0tephe5i9o+s!$y1o8_dh^88a)u)*x3ru3z)c(ms'
 
+    INTERNAL_IPS = ['127.0.0.1']
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
@@ -45,9 +46,11 @@ class Dev(Configuration):
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
+        'debug_toolbar',
     ]
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -116,7 +119,6 @@ class Dev(Configuration):
         'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
         'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     ]    
-
 
     # Internationalization
     # https://docs.djangoproject.com/en/5.1/topics/i18n/
