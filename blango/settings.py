@@ -48,12 +48,29 @@ class Dev(Configuration):
         'crispy_bootstrap5',
         'debug_toolbar',
         'blango_auth',
+
+        # Third-party apps
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
+
     ]
+
+    # Set the default site ID
+    SITE_ID = 1
+
+    # Django Allauth settings
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     MIDDLEWARE = [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
+        'allauth.account.middleware.AccountMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
